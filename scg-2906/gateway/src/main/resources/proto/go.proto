@@ -1,0 +1,13 @@
+syntax = "proto3";
+package org.kingdom.demo.grpc;
+option java_package = "org.kingdom.demo.grpc";
+option java_multiple_files = true;
+message GoRequest {
+  optional string where = 1;
+}
+message  GoResponse {
+  optional string where = 1;
+}
+service GoService {
+  rpc goWhere(GoRequest) returns(GoResponse) {}
+}
