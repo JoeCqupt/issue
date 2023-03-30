@@ -21,10 +21,9 @@ public class App {
                     String service = "GoService";
                     String method = "goWhere";
                     return f.jsonToGRPC(protoDescriptor, protoFile, service, method);
-                }).uri("localhost:9000"))
-                .route("test", r -> r.path("test/**").uri("http://www.baidu.com"))
+                }).uri("http://localhost:9000"))
+                .route("test", r -> r.path("/test/test").uri("http://www.baidu.com"))
                 .build();
     }
-
 
 }

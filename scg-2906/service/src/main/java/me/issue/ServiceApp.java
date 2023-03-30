@@ -22,7 +22,7 @@ public class ServiceApp {
         int grpcPort = 9000;
 
         ServerCredentials creds = createServerCredentials();
-        Server server = Grpc.newServerBuilderForPort(grpcPort, creds).addService(new GoService()).build().start();
+        Server server = Grpc.newServerBuilderForPort(grpcPort, creds).addService(new GoServiceImpl()).build().start();
 
         System.out.println("Starting gRPC server in port " + grpcPort);
         Thread.currentThread().join();
@@ -38,7 +38,7 @@ public class ServiceApp {
         return TlsServerCredentials.create(certChain, privateKey);
     }
 
-    static class GoService extends GoServiceGrpc.GoServiceImplBase {
+    static class GoServiceImpl extends GoServiceGrpc.GoServiceImplBase {
         @Override
         public void goWhere(GoRequest request, StreamObserver<GoResponse> responseObserver) {
 
